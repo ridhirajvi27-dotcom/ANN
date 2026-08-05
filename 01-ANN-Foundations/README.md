@@ -8,15 +8,15 @@
 
 | Notebook | Topic | Dataset | Task |
 |---|---|---|---|
-| [`Admission_prediction.`](./Admission_prediction.ipynb) | Regression with ANN | Graduate Admissions | Predict admission chance |
-| [`BreastCancer(binary_classification)`](./BreastCancer(binary_cassification).ipynb) | Binary Classification | Breast Cancer Wisconsin | Classify tumor as benign / malignant |
-| [`mnistexample`](./mnistexample.ipynb) | Multi-class Classification | MNIST Handwritten Digits | Recognize digits 0–9 |
+| `Admission_prediction` | Regression with ANN | Graduate Admissions | Predict admission chance |
+| `BreastCancer(binary_classification)` | Binary Classification | Breast Cancer Wisconsin | Classify tumor as benign / malignant |
+| `mnistexample`| Multi-class Classification | MNIST Handwritten Digits | Recognize digits 0–9 |
 
 ---
 
 ## 📓 Notebook Descriptions
 
-### 1. 🎓 Admission Prediction — Regression
+### 1. Admission Prediction — Regression
 
 
 A regression task that predicts the **probability of a student being admitted** to a graduate program based on academic features such as GRE score, TOEFL score, university rating, statement of purpose, letter of recommendation strength, CGPA, and research experience.
@@ -33,7 +33,7 @@ A regression task that predicts the **probability of a student being admitted** 
 
 ---
 
-### 2. 🔬 Breast Cancer Classification — Binary Classification
+### 2. Breast Cancer Classification — Binary Classification
 
 
 A binary classification task that uses an ANN to **classify breast tumors as benign or malignant** based on 30 numerical features derived from digitized images of fine needle aspirate (FNA) of a breast mass.
@@ -50,7 +50,7 @@ A binary classification task that uses an ANN to **classify breast tumors as ben
 
 ---
 
-### 3. ✍️ MNIST Digit Recognition — Multi-class Classification
+### 3. MNIST Digit Recognition — Multi-class Classification
 
 
 The classic "Hello, World!" of deep learning — training an ANN to **recognize handwritten digits (0–9)** from the MNIST dataset of 28×28 grayscale images.
@@ -65,4 +65,24 @@ The classic "Hello, World!" of deep learning — training an ANN to **recognize 
 
 **Dataset:** [MNIST](http://yann.lecun.com/exdb/mnist/) — 70,000 images (60,000 train / 10,000 test), 28×28 pixels.
 
+---
 
+### Task Type → Output Layer Design
+
+| Task | Output Neurons | Activation | Loss Function | Metric |
+|---|---|---|---|---|
+| Binary Classification | 1 | `sigmoid` | `binary_crossentropy` | `accuracy` |
+| Multi-class (integer labels) | N (num classes) | `softmax` | `sparse_categorical_crossentropy` | `accuracy` |
+| Regression | 1 | `linear` | `mean_squared_error` | R² score |
+
+---
+
+### Scalers Comparison
+
+| Scaler | Formula | Range | When to Use |
+|---|---|---|---|
+| `StandardScaler` | `(x - mean) / std` | Unbounded, ~(-3, 3) | Most ML tasks, especially with Gaussian-like features |
+| `MinMaxScaler` | `(x - min) / (max - min)` | [0, 1] | When you know the feature range or target is in [0, 1] |
+| Divide by max (e.g., `/255`) | `x / 255` | [0, 1] | Image pixel data |
+
+---
